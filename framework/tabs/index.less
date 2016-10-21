@@ -1,0 +1,163 @@
+@import "../common/variables.less";
+
+@tabs-height: 38px;
+
+.@{stbui}tabs {
+  position: relative;
+  overflow: hidden;
+
+  &-head {
+    position: relative;
+    .size(100%, @tabs-height);
+    border-bottom: 2px solid @brand-default;
+  }
+
+  &-list {
+    position: relative;
+    margin-left: 1px;
+
+    li {
+      float: left;
+      position: relative;
+      border: 1px solid #BBD4E8;
+      border-bottom: 0;
+      margin-left: -1px;
+      cursor: pointer;
+      .font-variant(@black, @font-size-large, @font-family-yahei);
+      padding: 6px 10px;
+
+      &.active {
+        height: 27px;
+        background: @white;
+        border: 1px solid @brand-default;
+        border-bottom: 0;
+        z-index: 1;
+      }
+
+      a {
+        .font-variant(@black, @font-size-large, @font-family-yahei);
+        &:hover {
+          .font-variant(@black, @font-size-large, @font-family-yahei);
+        }
+      }
+
+    }
+  }
+
+  &-more {
+    float: right;
+    margin-right: 5px;
+    margin-top: 15px;
+
+    a {
+      &.active {
+        display: block;
+        _float: right;
+      }
+    }
+  }
+
+  &-widget {
+    float: left;
+    margin: 13px 0px 0 17px;
+
+    a {
+      .font-variant(@link-color, 13px, @font-family-yahei);
+      font-weight: 900;
+      text-decoration: underline;
+      &:hover {
+        color: @link-hover-color;
+      }
+    }
+  }
+
+  &-content {
+
+    .@{stbui}tabs-panel {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    .@{stbui}table {
+      margin-top: 0;
+    }
+  }
+
+}
+
+.@{stbui}tabs-default {
+
+  &-head {
+  }
+
+  &-list {
+
+    li {
+
+      &.active {
+      }
+
+      a {
+        &:hover {
+        }
+      }
+
+    }
+  }
+
+  &-more {
+    a {
+      &.active {
+      }
+    }
+  }
+
+  &-content {
+
+    .@{stbui}tabs-panel {
+
+      &.active {
+      }
+    }
+
+    .@{stbui}table {
+    }
+  }
+
+}
+
+/**/
+.@{stbui}tabs-stacked {
+  &-head {
+    .size(112px, 350px);
+    overflow: hidden;
+
+    li {
+      width: 100%;
+      background-color: #eee;
+      border: 0;
+      margin: 5px 0;
+
+      a {
+        color: @white;
+      }
+
+      &.active,
+      &.active a {
+        color: @white;
+        background-color: #2F5895;
+        text-decoration: none;
+      }
+    }
+
+  }
+
+  &-content {
+    position: absolute;
+    top: 10px;
+    left: 120px;
+  }
+}

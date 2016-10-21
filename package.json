@@ -1,0 +1,18 @@
+{
+  "name": "stbui",
+  "version": "1.0.0",
+  "description": "stbui",
+  "scripts": {
+    "start": "stbui server start",
+    "open": "stbui server open",
+    "dev": "stbui release dev",
+    "watch": "stbui release dev -w",
+    "build": "stbui release prod",
+    "prod": "stbui release prod",
+    "dist": "stbui release prod"
+  },
+  "author": "stbui.com",
+  "license": "ISC",
+  "devDependencies": {
+  }
+}
