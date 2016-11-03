@@ -1,7 +1,10 @@
 {
-  "name": "stbui",
-  "version": "1.0.0",
+  "name": "stbui-pc",
+  "version": "0.0.2",
   "description": "stbui",
+  "bin": {
+    "stbui-pc": ""
+  },
   "scripts": {
     "start": "stbui server start",
     "open": "stbui server open",
@@ -13,6 +16,17 @@
   },
   "author": "stbui.com",
   "license": "ISC",
-  "devDependencies": {
-  }
+  "devDependencies": {},
+  "main": "stbui-conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stbui/stbui-pc.git"
+  },
+  "keywords": [
+    "stbui"
+  ],
+  "bugs": {
+    "url": "https://github.com/stbui/stbui-pc/issues"
+  },
+  "homepage": "https://github.com/stbui/stbui-pc#readme"
 }
