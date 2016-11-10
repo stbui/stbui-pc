@@ -5,8 +5,7 @@
   overflow: hidden;
 
   li {
-    background: url(./images/xgbg.png) -138px -119px no-repeat;
-    padding: 4px 0 4px 10px;
+    padding: 4px 0;
 
     h3 {
       font-size: @font-size-large;
@@ -15,22 +14,13 @@
   }
 
   &-summary {
-    .font-variant(#315795, 16px, @font-family-yahei);
-    overflow: hidden;
 
-    li {
-      padding: 12px 0;
-      background: none;
-
-    }
   }
 
-  &-truncate li a {
-    display: block;
-    word-wrap: normal;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  &-truncate li {
+    .nowrap();
+    /* ie6 需要指定宽度 */
+    *width: 100%;
   }
 
   &-border li {
@@ -42,13 +32,27 @@
   &-striped li:nth-of-type(even) {
     background: #f5f5f5;
   }
+
+  &-bull {
+    color:@brand-default;
+    font-size: @font-size-base;
+    margin-right: 5px;
+  }
+
+  &-type {
+    li {
+      //margin-right: 15px;
+      //background: url(./images/xgbg.png) -138px -119px no-repeat;
+    }
+  }
+
+
 }
 
 .@{stbui}list-md {
 
   li {
-    padding: 4px 0 5px 15px;
-    line-height: 17px;
+    font-size: @font-size-base;
 
     a {
       font-size: @font-size-base;

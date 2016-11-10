@@ -1,0 +1,42 @@
+@import "../common/variables.less";
+
+.@{stbui}panel-centre {
+
+  .@{stbui}panel-head {
+    padding: 0;
+    border-bottom: 4px solid #305895;
+    height: 36px
+  }
+
+  .@{stbui}panel-title {
+    .font-variant(#000; @font-size-large; @font-family-yahei);
+    background: #fff url(../common/images/element.png) no-repeat 0 -281px;
+    float: left;
+    position: relative;
+    top: 3px;
+    width: 110px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px
+  }
+
+  .@{stbui}panel-widget {
+    display: inline-block;
+    margin: 13px 0 0 17px
+  }
+
+  .@{stbui}panel-links {
+    position: absolute;
+    right: 160px;
+    top: 12px;
+
+    a {
+      margin: 0 5px;
+    }
+  }
+
+  .@{stbui}panel-footer {
+    //text-align: right;
+    //background: #fff;
+  }
+}

@@ -1,0 +1,54 @@
+.autocomplete {
+  position: absolute;
+  left: 82px;
+  top: 34px;
+  z-index: 1010;
+  border: 1px solid rgb(204, 204, 204);
+  background: #fff;
+  width: 208px;
+  text-align: center;
+  display: none;
+
+
+  &.open {
+    display: block;
+  }
+
+  .more {
+    color: #cc0000;
+    font-size: 12px;
+    display: block;
+    text-align: right;
+    padding: 1px;
+  }
+
+  &-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+
+    thead {
+      tr th {
+        background: #e6f4f5;
+        padding: 3px 0;
+      }
+    }
+
+    tbody {
+      tr {
+        &:hover {
+          background: rgb(252,254,223);
+        }
+
+        td {
+          padding: 1px;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+
+}
+

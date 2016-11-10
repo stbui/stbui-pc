@@ -1,6 +1,7 @@
 @import "../common/variables.less";
 
 .@{stbui}panel {
+  position: relative;
   background-color: @white;
   border: 1px solid transparent;
   *border: 1px solid @white;
@@ -40,8 +41,9 @@
 
   &-more {
     float: right;
-    margin-right: 5px;
-    margin-top: 7px;
+    position: absolute;
+    right: 5px;
+    top: 12px;
   }
 }
 

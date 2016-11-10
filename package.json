@@ -1,9 +1,9 @@
 {
   "name": "stbui-pc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "stbui",
   "bin": {
-    "stbui-pc": ""
+    "stbui-pc": "stbui-conf.js"
   },
   "scripts": {
     "start": "stbui server start",

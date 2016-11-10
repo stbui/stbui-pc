@@ -26,14 +26,12 @@
     background-color: @color;
     border-color: @color;
 
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
+    /* ie6 见鬼没有任何嵌套合关联，这段样式起作用了*/
+    /*&.active {
       color: @white;
       background-color: darken(@color, 5%);
       border-color: darken(@color, 5%);
-    }
+    }*/
   }
 }
 

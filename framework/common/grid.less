@@ -12,9 +12,9 @@
 
 .row {
   height: auto;
-  overflow: hidden;
   margin-left: -20px;
   margin-bottom: 7px;
+  overflow: hidden;
   clear: both;
   *zoom: 1;
 }
@@ -24,8 +24,8 @@
   float: left;
   margin-left: 20px;
   min-height: 1px;
+  *zoom: 1;
 }
-
 
 .alpha {
   margin-left: 0;
@@ -35,104 +35,66 @@
   margin-right: 0;
 }
 
-.col1 {
-  width: 65px;
-}
+.columns(12);
+.columns(@n, @i: 1) when (@i =< @n) {
+  .col@{i} {
+    width: (85*@i)-20px;
+  }
 
-.col2 {
-  width: 150px;
-}
-
-.col3 {
-  width: 235px;
-}
-
-.col4 {
-  width: 320px;
-}
-
-.col5 {
-  width: 405px;
-}
-
-.col6 {
-  width: 490px;
-}
-
-.col7 {
-  width: 575px;
-}
-
-.col8 {
-  width: 660px;
-}
-
-.col9 {
-  width: 745px;
-}
-
-.col10 {
-  width: 830px;
-}
-
-.col11 {
-  width: 915px;
-}
-
-.col12 {
-  width: 1000px;
-}
-
-.col75,
-.col50,
-.col25 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
-  min-height: 1px;
-}
-
-.col75 {
-  width: 75%;
-}
-
-.col50 {
-  width: 46%;
-}
-
-.col25 {
-  width: 25%;
-}
-
-.ad175 {
-  width: 175px;
-  height: 90px;
-}
-.ad588 {
-  width: 588px;
-  height: 90px;
+  .columns(@n, (@i + 1));
 }
 
 
-///  采用24分栏
-/*.grid {
+/***************************************/
+//采用24分栏
+.grid {
+  margin-left: -10px;
+  margin-right: -10px;
   height: auto;
   overflow: hidden;
-  margin-left: -20px;
-  margin-bottom: 7px;
   clear: both;
-}
-.g {
-  display: inline;
-  float: left;
-  margin-left: 20px;
-  min-height: 1px;
-}
-.g-variant(@size) {
-  .g-@{size} {
-  }
+  *zoom: 1;
 }
 
-.g-variant(1)
-.g-variant(2)
-.g-variant(3)*/
+
+.generate-columns(24);
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .g-@{i} {
+    //width: (@screen-base/24*@i)-10px;
+    // 42.5*24-20
+    width: (42.5*@i)-20px;
+  }
+  .generate-columns(@n, (@i + 1));
+}
+
+.make-grid-columns();
+.make-grid-columns() {
+  .col(@index) {
+    @item: ~".g-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< 24) {
+    @item: ~".g-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > 24) {
+    @{list} {
+      position: relative;
+      display: inline;
+      float: left;
+      min-height: 1px;
+      margin-left: 10px;
+      margin-right: 10px;
+      *zoom: 1;
+    }
+  }
+  .col(1);
+}
+
+.offset-grid-columns(10);
+.offset-grid-columns(@n, @i: 0) when (@i =< @n) {
+  .grid-offset-@{i} {
+    margin-bottom: @i*2px;
+  }
+  .offset-grid-columns(@n, (@i + 1));
+}

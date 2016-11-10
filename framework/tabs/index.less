@@ -3,7 +3,7 @@
 @tabs-height: 38px;
 
 .@{stbui}tabs {
-  position: relative;
+  //position: relative;
   overflow: hidden;
 
   &-head {
@@ -15,6 +15,7 @@
   &-list {
     position: relative;
     margin-left: 1px;
+    z-index: 1;
 
     li {
       float: left;
@@ -48,6 +49,8 @@
     float: right;
     margin-right: 5px;
     margin-top: 15px;
+    position: relative;
+    z-index: 1;
 
     a {
       &.active {
@@ -58,8 +61,10 @@
   }
 
   &-widget {
-    float: left;
-    margin: 13px 0px 0 17px;
+    position: relative;
+    top: 14px;
+    left: 20px;
+
 
     a {
       .font-variant(@link-color, 13px, @font-family-yahei);

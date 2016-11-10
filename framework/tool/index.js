@@ -29,34 +29,107 @@ var tool = {
         return color;
     },
     toYuan: function (str) {
-
         return str + '元';
-
     },
-    toDigit: function (str) {
+    //数字格式化
+    toDigit: function (str, how) {
+        str = parseFloat(str);
+        if (how) {
+            str = str.toFixed(how)
+        }
+        if (str == "NaN") {
+            str = "--";
+        }
+
         return str;
     },
     //小数转换成百分数
     toRate: function (str) {
-        var newstr = "";
-        str = str ? str : 0;
-        newstr = (str * 100).toFixed(2) + "%";
-        return newstr;
+        return this.toDigit(str * 100, 2) + '%';
     },
-    getCjmxValue: function (val) {
-        var unit = "";
-        if (isNaN(val)) {
-            return "-";
+    //数字格式化成万
+    getCjmxValue: function (Di) {
+        var chu = 1;
+        var res = Di;
+        if (Di > 0 && Di.length >= 6) {
+            chu = 6;
+        }
+        if (Di < 0 && Di.length >= 7) {
+            chu = 6;
+        }
+        if (chu == 6) {
+            res = this.toDigit((Di / 10000), 2) + "万";
+        }
+        return res;
+    },
+    //涨跌标记
+    udt: function (vs) {
+        if (vs > 0) {
+            return "↑";
+        } else if (vs < 0) {
+            return "↓";
         } else {
-            val = parseFloat(val);
-            if (val >= 1e4) {
-                val = val / 1e4;
-                return val.toFixed(0) + "万";
+            return "";
+        }
+    },
+    //涨跌平判断
+    zdp: function (Pnum) {
+        if (Pnum > 0) {
+            return 1;
+        } else if (Pnum < 0) {
+            return -1;
+        } else {
+            return 0;
+        }
+    },
+    //增减标记
+    fvc: function (vs) {
+        if (vs == 0 || vs == "") {
+            return "";
+        } else {
+            if (vs > 0) {
+                return "+" + vs;
             } else {
-                return val;
+                return vs;
             }
         }
-    }
+    },
+    //获取市场
+    getmarket: function (cd) {
+        var j = cd.substring(0, 3);
+        var i = j.substring(0, 1);
+        if (i == "5" || i == "6" || i == "9") {
+            return "1";
+        } else {
+            if (j == "009" || j == "126" || j == "110") {
+                return "1";
+            } else {
+                return "2";
+            }
+        }
+    },
+    //是否在开盘期间
+    bian: function (dt) {
+        var res = false;
+        var hs = dt.getHours();
+        var ms = dt.getMinutes();
+        if (hs >= 9 && hs <= 11) {
+            res = true;
+            if ((hs == 11) && ms >= 30)
+                res = false;
+        }
+        if (hs >= 13 && hs < 15) { res = true; }
+        return res;
+    },
+    //是否在盘前期间
+    panQian: function (dt) {
+        var res = false;
+        var hs = dt.getHours();
+        var ms = dt.getMinutes();
+        if (hs == 9) { if ((ms >= 14) && ms < 29) { res = true; } }
+        return res;
+    },
+
 }
 
 module.exports = tool;
